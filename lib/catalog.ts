@@ -66,7 +66,7 @@ export const products: Product[] = placeholderProducts.map(
     categoryId,
     placeholderLabel: {
       th: `ข้อมูลตัวอย่าง ${String(index + 1).padStart(2, "0")}`,
-      en: `Placeholder ${String(index + 1).padStart(2, "0")}`,
+      en: `Sample information ${String(index + 1).padStart(2, "0")}`,
     },
     status: "placeholder",
     visual,
