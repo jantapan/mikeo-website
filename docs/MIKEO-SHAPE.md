@@ -8,19 +8,19 @@ This responsive homepage north-star mock is the authoritative visual reference f
 
 ## 1. Feature Summary
 
-A production-ready, Thai-language marketing and product-catalog website for MIKEO. It serves mobile-first Thai consumers exploring daily wellness and beauty products, while providing secondary journeys for product advice and distributor enquiries.
+A production-ready, Thai-first brand and product showcase for prospective overseas agents, distributors, and business partners. It presents MIKEO's portfolio and verification approach while providing a clear business-enquiry journey; the content and product-data structure must support a later English edition.
 
 The approved reference supplies structural inspiration only. Its content, colors, typography, components, and commercial patterns must not be copied.
 
 ## 2. Primary User Action
 
-Help visitors find a relevant product, understand its verified information, and continue safely to an official MIKEO ordering channel.
+Help prospective partners understand the MIKEO portfolio and choose the primary action “ดูผลิตภัณฑ์”, with “ติดต่อเรา” as the secondary business-enquiry action.
 
 When no verified channel exists, show:
 
-> กำลังอัปเดตช่องทางอย่างเป็นทางการ
+> กำลังอัปเดตช่องทางติดต่ออย่างเป็นทางการ
 
-No direct checkout, cart, wishlist, or fake destination.
+There is no purchasing, cart, checkout, payment, wishlist, direct ordering flow, or price display. Contact controls may navigate to `/contact`, but no external action may appear until a verified business URL is supplied.
 
 ## 3. Design Direction
 
@@ -49,7 +49,7 @@ Every non-red visual token remains provisional until deliberately selected, test
   - About MIKEO
   - Standards and verified information
   - Distributor information
-  - Contact and official ordering channels
+  - Contact and business-enquiry information
 - Launch catalog: four categories and approximately 8–12 products, both provisional
 - Interactivity:
   - Sticky accessible header
@@ -57,9 +57,9 @@ Every non-red visual token remains provisional until deliberately selected, test
   - Accessible category filters
   - Responsive catalog
   - Product-detail disclosures
-  - Verified external links when available
+  - Verified business-contact links when available
 - Language: Thai only at launch, with architecture that can support English later
-- Commerce: external handoff only; no checkout
+- Commerce: entirely out of scope; this is a showcase and business-enquiry surface
 - Quality intent: polish until suitable for release
 
 ## 5. Layout Strategy
@@ -87,7 +87,7 @@ Product pages should prioritize:
 2. Intended role in a routine
 3. Verified information disclosures
 4. Directions and cautions
-5. Official order or advice handoff
+5. Business-enquiry handoff
 6. Related products from verified catalog data
 
 ## 6. Key States
@@ -98,11 +98,11 @@ Product pages should prioritize:
 - Missing product: plain Thai not-found state with catalog recovery action.
 - Data error: acknowledge that information could not be loaded and provide retry/navigation options.
 - Unverified content: explicitly label it as awaiting verified source material.
-- Missing order channel: show “กำลังอัปเดตช่องทางอย่างเป็นทางการ” with no inert fake link.
+- Missing contact channel: show “กำลังอัปเดตช่องทางติดต่ออย่างเป็นทางการ” with no inert fake link.
 - No best sellers verified: omit the ranking claim and present neutral product discovery instead.
 - No certifications verified: explain that verified documents are being prepared; never render empty badge silhouettes.
 - Filter with no matches: identify the selected category and provide a clear reset action.
-- External-link handoff: clearly identify that the visitor is leaving for an official MIKEO channel.
+- External-link handoff: when verified URLs are eventually supplied, clearly identify that the visitor is leaving for an official MIKEO business channel.
 - Reduced motion: instant state changes or gentle crossfades, with identical information and functionality.
 - Keyboard and zoom: complete interaction at 200% zoom without clipping, hover dependence, or lost focus.
 
@@ -113,7 +113,7 @@ Product pages should prioritize:
 - Category filters behave as a labeled single-selection control with programmatic selected state.
 - Product tiles link to details; they do not contain cart or wishlist controls.
 - Product-detail information uses semantic sections or accessible disclosure controls where collapsing genuinely helps mobile comprehension.
-- External CTAs activate only for verified URLs.
+- Internal contact CTAs navigate to `/contact`; external CTAs activate only for verified business URLs.
 - Hover, pressed, and focus-visible feedback is tactile and immediate.
 - No autoplay marquees, carousels, flashing promotions, fake countdowns, or scroll-gated content.
 
@@ -127,11 +127,10 @@ Required verified or clearly placeholder-labeled data:
 - Ingredients
 - Directions
 - Cautions
-- Prices
 - Thai FDA or regulatory details
 - Certifications and supporting documents
 - Manufacturer or sourcing information
-- Official ordering and contact links
+- Verified business-contact links
 - Distributor requirements and contact process
 - Testimonials with publication permission and authenticity records
 
@@ -145,9 +144,9 @@ Media roles:
 - Standards: verified document previews or restrained informational graphics—not invented badges
 - Distributor section: authentic people or brand-operation imagery, avoiding MLM visual language
 
-All temporary content must announce its placeholder status. Placeholder copy must not resemble a real efficacy claim, certification, registration number, testimonial, price, or purchasing destination.
+All temporary content must announce its placeholder status. Placeholder copy must not resemble a real product name, efficacy claim, ingredient list, certification, registration number, testimonial, price, contact detail, or purchasing destination.
 
-Only verified content may be presented as factual or actionable. Product and proof placeholders, unavailable-channel safeguards, and the prohibition on invented claims or links are mandatory throughout implementation.
+Only verified content may be presented as factual or actionable. Product and proof placeholders, unavailable-contact safeguards, and the prohibition on invented regulated, commercial, contact, or product information are mandatory throughout implementation.
 
 ## 9. Recommended Implementation References
 

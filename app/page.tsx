@@ -1,65 +1,120 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ProductExplorer } from "@/components/ProductExplorer";
+import { ProductVisual } from "@/components/ProductVisual";
+import { categories } from "@/lib/catalog";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <section className="home-hero red-field">
+        <div className="shell hero-grid">
+          <div className="hero-copy">
+            <p className="hero-note">MIKEO · Brand & product showcase</p>
+            <h1>ให้ทุกวันของการดูแลตัวเอง <span>ง่ายขึ้น สนุกขึ้น และมั่นใจขึ้น</span></h1>
+            <p>ทำความรู้จักแบรนด์ MIKEO และสำรวจโครงสร้างกลุ่มผลิตภัณฑ์สำหรับตัวแทนและผู้จัดจำหน่าย</p>
+            <div className="button-row">
+              <Link className="button button-inverse" href="/products">ดูผลิตภัณฑ์</Link>
+              <Link className="button button-on-red" href="/contact">ติดต่อเรา</Link>
+            </div>
+          </div>
+          <div className="hero-stage" aria-label="ภาพจำลองพื้นที่แสดงผลิตภัณฑ์ ข้อมูลจริงอยู่ระหว่างการอัปเดต">
+            <div className="hero-sun" aria-hidden="true" />
+            <div className="hero-packages" aria-hidden="true">
+              <ProductVisual visual="pouch" />
+              <ProductVisual visual="jar" compact />
+              <ProductVisual visual="bottle" />
+            </div>
+            <span className="visual-caption">ภาพผลิตภัณฑ์ตัวอย่างเพื่อแสดงโครงสร้างเท่านั้น</span>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="verification-strip" aria-label="สถานะข้อมูล">
+        <div className="shell verification-inner">
+          <span className="info-mark" aria-hidden="true">i</span>
+          <p><strong>ข้อมูลจริงอยู่ระหว่างการตรวจสอบ</strong> รายละเอียดผลิตภัณฑ์ เอกสาร และมาตรฐานจะเผยแพร่เมื่อได้รับการยืนยันเท่านั้น</p>
+          <Link href="/standards">ดูแนวทางการตรวจสอบ <span aria-hidden="true">→</span></Link>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="section product-discovery">
+        <div className="shell">
+          <div className="section-heading split-heading">
+            <div>
+              <h2>เลือกดูโครงสร้างผลิตภัณฑ์</h2>
+              <p>สำรวจหมวดหมู่เบื้องต้น ข้อมูลทั้งหมดในส่วนนี้เป็นตัวอย่างและกำลังอัปเดต</p>
+            </div>
+            <Link className="text-link" href="/products">ดูแคตตาล็อกทั้งหมด <span aria-hidden="true">→</span></Link>
+          </div>
+          <ProductExplorer limit={4} />
+        </div>
+      </section>
+
+      <section className="category-collections" aria-labelledby="category-title">
+        <div className="shell section-heading">
+          <h2 id="category-title">กลุ่มผลิตภัณฑ์เบื้องต้น</h2>
+          <p>สี่หมวดหมู่สำหรับวางโครงสร้างแคตตาล็อก รายการจริงจะอัปเดตเมื่อได้รับข้อมูลที่ยืนยันแล้ว</p>
+        </div>
+        <div className="shell category-grid">
+          {categories.map((category, index) => (
+            <Link href={`/products?category=${category.id}`} className={`category-panel category-panel-${index + 1}`} key={category.id}>
+              <h3>{category.name.th}</h3>
+              <p>กำลังอัปเดตข้อมูล</p>
+              <span className="category-arrow" aria-hidden="true">↗</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="story-split">
+        <div className="shell story-grid">
+          <div className="story-copy">
+            <h2>การดูแลตัวเองที่เข้ากับทุกวันจริง</h2>
+            <p>MIKEO นำเวลเนส บอดี้แคร์ สกินแคร์ และความงามมารวมไว้ในกิจวัตรประจำวันที่เข้าถึงง่าย ด้วยผลิตภัณฑ์ที่ตั้งใจสร้างให้เข้ากับชีวิตจริงของผู้บริโภคชาวไทย</p>
+            <Link className="button button-secondary" href="/about">รู้จัก MIKEO</Link>
+          </div>
+          <div className="brand-image-placeholder" role="img" aria-label="พื้นที่สำหรับภาพแบรนด์ MIKEO ซึ่งกำลังรอภาพที่ได้รับอนุมัติ">
+            <span className="story-sun" aria-hidden="true" />
+            <strong>ภาพแบรนด์กำลังอัปเดต</strong>
+            <small>จะแสดงเมื่อได้รับไฟล์ที่ได้รับอนุมัติ</small>
+          </div>
+        </div>
+      </section>
+
+      <section className="section standards-home">
+        <div className="shell standards-layout">
+          <div>
+            <h2>ความชัดเจนก่อนการกล่าวอ้าง</h2>
+            <p>MIKEO จะเผยแพร่ข้อมูลผลิตภัณฑ์ เอกสาร และมาตรฐานเฉพาะรายการที่ตรวจสอบแหล่งที่มาแล้วเท่านั้น</p>
+            <Link className="text-link" href="/standards">ดูสถานะข้อมูลและมาตรฐาน <span aria-hidden="true">→</span></Link>
+          </div>
+          <div className="standards-list">
+            <div><span aria-hidden="true">01</span><p>แยกข้อมูลตัวอย่างออกจากข้อมูลที่ยืนยันแล้วอย่างชัดเจน</p></div>
+            <div><span aria-hidden="true">02</span><p>ไม่แสดงเลขทะเบียน เอกสาร หรือข้อกล่าวอ้างที่ยังไม่มีแหล่งอ้างอิง</p></div>
+            <div><span aria-hidden="true">03</span><p>อัปเดตข้อมูลรายผลิตภัณฑ์เมื่อได้รับเอกสารต้นทาง</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="distributor-callout red-field">
+        <div className="shell callout-grid">
+          <div>
+            <h2>สนใจร่วมเติบโตกับ MIKEO</h2>
+            <p>ข้อมูลสำหรับตัวแทนและผู้จัดจำหน่ายอยู่ระหว่างการจัดเตรียม คุณสามารถดูโครงสร้างความร่วมมือเบื้องต้นได้ในหน้าสำหรับธุรกิจ</p>
+          </div>
+          <Link className="button button-inverse" href="/distributors">ข้อมูลสำหรับตัวแทน</Link>
+        </div>
+      </section>
+
+      <section className="contact-handoff">
+        <div className="shell contact-handoff-inner">
+          <div>
+            <h2>เริ่มต้นบทสนทนาทางธุรกิจ</h2>
+            <p>กำลังอัปเดตช่องทางติดต่ออย่างเป็นทางการ</p>
+          </div>
+          <Link className="button button-primary" href="/contact">ติดต่อเรา</Link>
+        </div>
+      </section>
+    </>
   );
 }

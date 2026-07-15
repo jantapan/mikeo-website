@@ -10,17 +10,15 @@ web
 
 ## Users
 
-MIKEO primarily serves Thai consumers who want convenient, approachable health, body-care, skincare, and beauty products. The initial working audience hypothesis emphasizes women aged 20–45, but this range must be validated against real customer and analytics data rather than treated as a fixed boundary.
+MIKEO primarily serves prospective overseas agents, distributors, and business partners evaluating the brand and its product portfolio. They need to understand the MIKEO identity, explore provisional product categories, review verified product and standards information when supplied, and decide whether to begin a business enquiry.
 
-Visitors usually browse on mobile. They need to understand the MIKEO brand, compare products, and review ingredients, intended benefits, directions, cautions, prices, and trustworthy regulatory or certification information before continuing to an official channel to order or ask for advice.
-
-A secondary audience consists of people interested in becoming MIKEO distributors or sales agents. They need a clear path to understand the opportunity and contact the brand without distracting from the consumer journey.
+The release is Thai-first and mobile-first, while its content and data architecture must allow an English edition to be added later. Public consumers may also browse the showcase, but purchasing is not part of this website's scope.
 
 ## Product Purpose
 
-The website presents the MIKEO brand, product categories, best sellers, brand story, certifications, distributor information, and contact or ordering paths. It helps visitors identify a product suited to their needs and routine, understand it in plain language, and make an informed decision without pressure.
+The website is a brand and product showcase for overseas agents and distributors. It presents MIKEO's positioning, provisional product categories, catalog structure, brand story, standards and verification approach, distributor information, and business-contact path.
 
-Success means that a consumer who finds the right product confidently selects “Order now” and continues to a verified MIKEO purchasing channel, such as the official LINE account or an approved official store. Direct checkout is currently out of scope. Secondary outcomes are requests for product advice and enquiries about distributor opportunities.
+Success means that a qualified visitor can understand the portfolio and confidently choose “ดูผลิตภัณฑ์”, then use “ติดต่อเรา” to begin a business enquiry once verified contact details are supplied. There is no purchasing, cart, checkout, payment, wishlist, direct ordering flow, or price display.
 
 ## Positioning
 
@@ -28,18 +26,18 @@ MIKEO brings wellness, body care, skincare, and beauty into one approachable dai
 
 ## Conversion & proof
 
-- Primary CTA: “Order now,” leading to a verified official MIKEO purchasing channel.
-- Secondary CTAs: ask MIKEO for product advice or enquire about becoming a distributor.
+- Primary CTA: “ดูผลิตภัณฑ์”.
+- Secondary CTA: “ติดต่อเรา” for a business enquiry.
 - The line a visitor remembers after ten seconds: “MIKEO — ให้ทุกวันของการดูแลตัวเอง ง่ายขึ้น สนุกขึ้น และมั่นใจขึ้น”
 - Belief ladder:
   1. MIKEO is a legitimate, approachable Thai brand that understands everyday self-care.
-  2. The product is relevant to the visitor’s needs and routine, and its intended purpose is clear.
+  2. The portfolio and provisional product categories are relevant to the visitor’s market or business interests.
   3. Its ingredients, directions, cautions, and verified regulatory or certification information are presented transparently.
   4. Its claims are reasonable and supported by credible evidence or authentic customer experiences where available.
-  5. Ordering through an official MIKEO channel is simple and safe, with real support available for questions.
+  5. Beginning a business conversation through a verified MIKEO contact channel feels clear and credible.
 - Proof available now: official MIKEO logo source files and PNG variants, pending addition to the project; brand-team-supplied brand name, founder information, general brand description, and main product categories for planning.
-- Proof still being gathered or verified: product-specific Thai FDA registration details; certification documents; laboratory reports; manufacturer information; ingredient specifications; approved benefit statements; directions and cautions; original high-resolution product and lifestyle photography; publishable customer testimonials with authenticity and permission records; official retailer, marketplace, LINE, and social links; and distributor requirements, terms, materials, and contact process.
-- Evidence rule: efficacy claims, ingredients, Thai FDA numbers, certifications, test results, prices, testimonials, and ordering or retailer links remain unverified until supported by real source materials. Never invent or imply them. Any temporary reference must be clearly labeled as a content placeholder and must not resemble verified evidence.
+- Proof still being gathered or verified: product-specific Thai FDA registration details; certification documents; laboratory reports; manufacturer information; ingredient specifications; approved benefit statements; directions and cautions; original high-resolution product and lifestyle photography; publishable customer testimonials with authenticity and permission records; verified business-contact URLs; and distributor requirements, terms, materials, and contact process.
+- Evidence rule: product photos, real product copy, efficacy claims, ingredients, Thai FDA numbers, certifications, test results, prices, testimonials, and business-contact URLs remain unverified until supported by real source materials. Never invent or imply them. Any temporary reference must be clearly labeled as a content placeholder and must not resemble verified evidence.
 
 ## Brand Personality
 
@@ -68,9 +66,9 @@ The voice must never use miracle cures, guaranteed or rapid weight-loss claims, 
 
 1. **Make everyday care feel inviting.** Present wellness and beauty as an enjoyable, achievable part of real Thai routines rather than a clinical regimen or aspirational performance.
 2. **Earn trust through useful clarity.** Put intended use, ingredients, directions, cautions, evidence, and verified regulatory details where people need them, in plain Thai and without hype.
-3. **Lead with products, support with story.** Help mobile visitors find and compare the right product quickly, while using MIKEO’s story and standards to deepen confidence.
+3. **Lead with the portfolio, support with story.** Help prospective partners understand MIKEO's product categories quickly, while using the brand story and verification approach to deepen confidence.
 4. **Be lively without applying pressure.** Use the brand’s spirited energy to welcome and guide; keep decisions calm, respectful, and free of urgency tactics.
-5. **Make every next step feel official and safe.** Clearly distinguish verified MIKEO ordering, advice, and distributor channels, and never publish unverified links or proof.
+5. **Make every next step feel official and safe.** Clearly distinguish verified MIKEO business-contact channels, and never publish unverified links or proof.
 
 ## Accessibility & Inclusion
 

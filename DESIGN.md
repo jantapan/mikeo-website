@@ -77,7 +77,7 @@ MIKEO is flat by default. Depth comes from color fields, spacing, scale, and cle
 
 Component tokens and canonical patterns are intentionally unresolved in this seed. Define them during implementation from verified colors, selected typefaces, real product content, and responsive testing; then re-run `$impeccable document` to extract the implemented system.
 
-Buttons must provide an obvious primary “Order now” action, visible keyboard focus, tactile hover and pressed states, and a preferred minimum target of `44×44px`. Product containers must prioritize comparison and disclosure over repetitive card decoration. Forms must use persistent labels, clear instructions, and plain-language errors.
+Buttons must provide an obvious primary “ดูผลิตภัณฑ์” action and a secondary “ติดต่อเรา” business-enquiry action, visible keyboard focus, tactile hover and pressed states, and a preferred minimum target of `44×44px`. Product containers must prioritize portfolio discovery and disclosure over repetitive card decoration. This showcase has no purchasing, cart, checkout, payment, wishlist, direct ordering flow, or price display. Forms must not appear until a real endpoint and verified contact process exist.
 
 ## 6. Do's and Don'ts
 
