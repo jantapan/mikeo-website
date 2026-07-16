@@ -156,9 +156,7 @@ export default async function ProductPage({
     previousImage: d.product.previousImage,
     nextImage: d.product.nextImage,
   };
-  const hasEvidence = product.nutritionImages.length > 0
-    || product.certificationImages.length > 0
-    || product.advisoryImages.length > 0;
+  const hasEvidence = product.advisoryImages.length > 0;
 
   return (
     <article className={`product-showcase product-theme-${product.accent} product-locale-${locale}`}>
@@ -177,12 +175,6 @@ export default async function ProductPage({
             )}
             {product.usageImages.length > 0 && (
               <a href="#how-to-use">{d.product.sections[3]}</a>
-            )}
-            {product.nutritionImages.length > 0 && (
-              <a href="#nutrition-information">{d.product.nutritionTitle}</a>
-            )}
-            {product.certificationImages.length > 0 && (
-              <a href="#certification-documents">{d.product.certificationTitle}</a>
             )}
             {product.advisoryImages.length > 0 && (
               <a href="#customer-information">{d.product.advisoryTitle}</a>
@@ -215,27 +207,18 @@ export default async function ProductPage({
 
           {productImage.length > 0 && (
             <div className="product-showcase-packshot">
-              {locale === "th" ? (
-                <ProductAtmosphere
-                  effect={product.effect}
-                  label={d.product.playEffect}
-                  hint={d.product.effectHint}
-                >
-                  <ProductGallery
-                    images={productImage}
-                    variant="hero"
-                    preload
-                    copy={galleryCopy}
-                  />
-                </ProductAtmosphere>
-              ) : (
+              <ProductAtmosphere
+                effect={product.effect}
+                label={d.product.playEffect}
+                hint={d.product.effectHint}
+              >
                 <ProductGallery
                   images={productImage}
                   variant="hero"
                   preload
                   copy={galleryCopy}
                 />
-              )}
+              </ProductAtmosphere>
             </div>
           )}
 
@@ -301,28 +284,6 @@ export default async function ProductPage({
 
       {hasEvidence && (
         <div className="product-evidence-theatre" aria-label={d.product.evidenceArtwork}>
-          {product.nutritionImages.length > 0 && (
-            <GallerySection
-              id="nutrition-information"
-              title={d.product.nutritionTitle}
-              images={product.nutritionImages}
-              locale={locale}
-              copy={d.product}
-              tone="evidence"
-              evidence
-            />
-          )}
-          {product.certificationImages.length > 0 && (
-            <GallerySection
-              id="certification-documents"
-              title={d.product.certificationTitle}
-              images={product.certificationImages}
-              locale={locale}
-              copy={d.product}
-              tone="evidence"
-              evidence
-            />
-          )}
           {product.advisoryImages.length > 0 && (
             <GallerySection
               id="customer-information"

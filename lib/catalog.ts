@@ -47,8 +47,8 @@ export type ProductEffect =
 
 // All product content below is transcribed from brand-supplied packaging and
 // material images in incoming/ (see docs/PRODUCT-IMAGE-INVENTORY.md).
-// Certification and customer guidance are displayed as supplied artwork; no
-// unverified prices, contact details, registration numbers, or claims are added.
+// Customer guidance is displayed as supplied artwork; no unverified prices,
+// contact details, registration numbers, or claims are added.
 export type Product = {
   slug: string;
   categoryId: CategoryId;
@@ -70,8 +70,6 @@ export type Product = {
   ingredientImages: ProductContentImage[];
   compositionImages: ProductContentImage[];
   usageImages: ProductContentImage[];
-  nutritionImages: ProductContentImage[];
-  certificationImages: ProductContentImage[];
   advisoryImages: ProductContentImage[];
   accent: ProductAccent;
   effect: ProductEffect;
@@ -133,7 +131,7 @@ type ProductShowcaseContent = Pick<
 
 type ProductEvidenceContent = Pick<
   Product,
-  "nutritionImages" | "certificationImages" | "advisoryImages"
+  "advisoryImages"
 >;
 
 function contentImage(
@@ -154,33 +152,17 @@ function contentImage(
 function evidenceImage(
   slug: string,
   filename: string,
-  kind: "nutrition" | "certification" | "advisory",
   productName: string,
   width = 1280,
   height = 1280,
 ): ProductContentImage {
-  const labels = {
-    nutrition: {
-      th: "ภาพข้อมูลโภชนาการ",
-      en: "nutrition information artwork",
-    },
-    certification: {
-      th: "ภาพใบรับรองฮาลาล",
-      en: "Halal certificate artwork",
-    },
-    advisory: {
-      th: "ภาพข้อมูลสำคัญสำหรับลูกค้า",
-      en: "customer guidance artwork",
-    },
-  } as const;
-
   return {
     src: `/images/product-evidence/${slug}/${filename}`,
     width,
     height,
     alt: {
-      th: `${labels[kind].th}สำหรับ ${productName}`,
-      en: `${labels[kind].en} for ${productName}`,
+      th: `ภาพข้อมูลสำคัญสำหรับลูกค้าสำหรับ ${productName}`,
+      en: `Customer guidance artwork for ${productName}`,
     },
   };
 }
@@ -440,119 +422,58 @@ const productShowcaseContent: Record<string, ProductShowcaseContent> = {
 
 const productEvidenceContent: Partial<Record<string, ProductEvidenceContent>> = {
   "veggie-fiber-coffee": {
-    nutritionImages: [
-      evidenceImage("veggie-fiber-coffee", "nutrition-information.webp", "nutrition", "Mikeo Veggie Fiber Coffee Mix Plus"),
-    ],
-    certificationImages: [],
     advisoryImages: [
-      evidenceImage("veggie-fiber-coffee", "customer-guidance.webp", "advisory", "Mikeo Veggie Fiber Coffee Mix Plus"),
+      evidenceImage("veggie-fiber-coffee", "customer-guidance.webp", "Mikeo Veggie Fiber Coffee Mix Plus"),
     ],
   },
   "pistachio-coffee": {
-    nutritionImages: [
-      evidenceImage("pistachio-coffee", "nutrition-information.webp", "nutrition", "Mikeo Pistachio Coffee Mix Plus"),
-    ],
-    certificationImages: [],
     advisoryImages: [
-      evidenceImage("pistachio-coffee", "customer-guidance.webp", "advisory", "Mikeo Pistachio Coffee Mix Plus"),
+      evidenceImage("pistachio-coffee", "customer-guidance.webp", "Mikeo Pistachio Coffee Mix Plus"),
     ],
   },
   "coffee-bird-nest": {
-    nutritionImages: [
-      evidenceImage("coffee-bird-nest", "nutrition-information.webp", "nutrition", "Mikeo Coffee Bird Nest"),
-    ],
-    certificationImages: [
-      evidenceImage("coffee-bird-nest", "halal-certificate.webp", "certification", "Mikeo Coffee Bird Nest"),
-    ],
     advisoryImages: [
-      evidenceImage("coffee-bird-nest", "customer-guidance.webp", "advisory", "Mikeo Coffee Bird Nest"),
+      evidenceImage("coffee-bird-nest", "customer-guidance.webp", "Mikeo Coffee Bird Nest"),
     ],
-  },
-  "matcha-latte-xs": {
-    nutritionImages: [
-      evidenceImage("matcha-latte-xs", "nutrition-information.webp", "nutrition", "MIKEO Matcha Latte XS Mix Plus"),
-    ],
-    certificationImages: [
-      evidenceImage("matcha-latte-xs", "halal-certificate.webp", "certification", "MIKEO Matcha Latte XS Mix Plus"),
-    ],
-    advisoryImages: [],
   },
   "cacao-cocoa-mix-plus": {
-    nutritionImages: [
-      evidenceImage("cacao-cocoa-mix-plus", "nutrition-information.webp", "nutrition", "MIKEO Cacao & Cocoa Mix Plus"),
-    ],
-    certificationImages: [],
     advisoryImages: [
-      evidenceImage("cacao-cocoa-mix-plus", "customer-guidance.webp", "advisory", "MIKEO Cacao & Cocoa Mix Plus"),
+      evidenceImage("cacao-cocoa-mix-plus", "customer-guidance.webp", "MIKEO Cacao & Cocoa Mix Plus"),
     ],
   },
   "gluta-collagen-tomato": {
-    nutritionImages: [
-      evidenceImage("gluta-collagen-tomato", "nutrition-information.webp", "nutrition", "MIKEO Gluta Collagen Tomato"),
-    ],
-    certificationImages: [
-      evidenceImage("gluta-collagen-tomato", "halal-certificate.webp", "certification", "MIKEO Gluta Collagen Tomato"),
-    ],
     advisoryImages: [
-      evidenceImage("gluta-collagen-tomato", "customer-guidance.webp", "advisory", "MIKEO Gluta Collagen Tomato"),
-      evidenceImage("gluta-collagen-tomato", "ingredient-guidance.webp", "advisory", "MIKEO Gluta Collagen Tomato"),
+      evidenceImage("gluta-collagen-tomato", "customer-guidance.webp", "MIKEO Gluta Collagen Tomato"),
+      evidenceImage("gluta-collagen-tomato", "ingredient-guidance.webp", "MIKEO Gluta Collagen Tomato"),
     ],
   },
   "blood-orange-c": {
-    nutritionImages: [
-      evidenceImage("blood-orange-c", "nutrition-information.webp", "nutrition", "MIKEO Blood Orange C"),
-    ],
-    certificationImages: [],
     advisoryImages: [
-      evidenceImage("blood-orange-c", "customer-guidance.webp", "advisory", "MIKEO Blood Orange C"),
+      evidenceImage("blood-orange-c", "customer-guidance.webp", "MIKEO Blood Orange C"),
     ],
   },
   "gluta-collagen-sakura-peach": {
-    nutritionImages: [
-      evidenceImage("gluta-collagen-sakura-peach", "nutrition-information.webp", "nutrition", "MIKEO Gluta Collagen Sakura Peach"),
-    ],
-    certificationImages: [
-      evidenceImage("gluta-collagen-sakura-peach", "halal-certificate.webp", "certification", "MIKEO Gluta Collagen Sakura Peach"),
-    ],
     advisoryImages: [
-      evidenceImage("gluta-collagen-sakura-peach", "customer-guidance.webp", "advisory", "MIKEO Gluta Collagen Sakura Peach"),
-      evidenceImage("gluta-collagen-sakura-peach", "combined-usage-guidance.webp", "advisory", "MIKEO Gluta Collagen Sakura Peach", 1524, 1074),
+      evidenceImage("gluta-collagen-sakura-peach", "customer-guidance.webp", "MIKEO Gluta Collagen Sakura Peach"),
+      evidenceImage("gluta-collagen-sakura-peach", "combined-usage-guidance.webp", "MIKEO Gluta Collagen Sakura Peach", 1524, 1074),
     ],
   },
   "collagen-berry-zinc": {
-    nutritionImages: [
-      evidenceImage("collagen-berry-zinc", "nutrition-information.webp", "nutrition", "MIKEO Collagen Berry Zinc"),
-    ],
-    certificationImages: [
-      evidenceImage("collagen-berry-zinc", "halal-certificate.webp", "certification", "MIKEO Collagen Berry Zinc"),
-    ],
     advisoryImages: [
-      evidenceImage("collagen-berry-zinc", "customer-guidance.webp", "advisory", "MIKEO Collagen Berry Zinc"),
-      evidenceImage("collagen-berry-zinc", "combined-usage-guidance.webp", "advisory", "MIKEO Collagen Berry Zinc", 1524, 1074),
+      evidenceImage("collagen-berry-zinc", "customer-guidance.webp", "MIKEO Collagen Berry Zinc"),
+      evidenceImage("collagen-berry-zinc", "combined-usage-guidance.webp", "MIKEO Collagen Berry Zinc", 1524, 1074),
     ],
   },
   "fiber-xs-green-apple": {
-    nutritionImages: [
-      evidenceImage("fiber-xs-green-apple", "nutrition-information.webp", "nutrition", "MIKEO Fiber XS Green Apple"),
-    ],
-    certificationImages: [
-      evidenceImage("fiber-xs-green-apple", "halal-certificate.webp", "certification", "MIKEO Fiber XS Green Apple"),
-    ],
     advisoryImages: [
-      evidenceImage("fiber-xs-green-apple", "customer-guidance.webp", "advisory", "MIKEO Fiber XS Green Apple"),
-      evidenceImage("fiber-xs-green-apple", "color-guidance.webp", "advisory", "MIKEO Fiber XS Green Apple"),
-      evidenceImage("fiber-xs-green-apple", "appearance-guidance.webp", "advisory", "MIKEO Fiber XS Green Apple"),
+      evidenceImage("fiber-xs-green-apple", "customer-guidance.webp", "MIKEO Fiber XS Green Apple"),
+      evidenceImage("fiber-xs-green-apple", "color-guidance.webp", "MIKEO Fiber XS Green Apple"),
+      evidenceImage("fiber-xs-green-apple", "appearance-guidance.webp", "MIKEO Fiber XS Green Apple"),
     ],
   },
   "fiber-xs-plus-berry-zinc": {
-    nutritionImages: [
-      evidenceImage("fiber-xs-plus-berry-zinc", "nutrition-information.webp", "nutrition", "MIKEO Fiber XS Plus Berry Zinc"),
-    ],
-    certificationImages: [
-      evidenceImage("fiber-xs-plus-berry-zinc", "halal-certificate.webp", "certification", "MIKEO Fiber XS Plus Berry Zinc"),
-    ],
     advisoryImages: [
-      evidenceImage("fiber-xs-plus-berry-zinc", "customer-guidance.webp", "advisory", "MIKEO Fiber XS Plus Berry Zinc"),
+      evidenceImage("fiber-xs-plus-berry-zinc", "customer-guidance.webp", "MIKEO Fiber XS Plus Berry Zinc"),
     ],
   },
 };
@@ -876,8 +797,6 @@ const productRecords: Omit<
 export const products: Product[] = productRecords.map((product) => ({
   ...product,
   ...productShowcaseContent[product.slug],
-  nutritionImages: productEvidenceContent[product.slug]?.nutritionImages ?? [],
-  certificationImages: productEvidenceContent[product.slug]?.certificationImages ?? [],
   advisoryImages: productEvidenceContent[product.slug]?.advisoryImages ?? [],
 }));
 

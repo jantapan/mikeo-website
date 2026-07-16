@@ -92,7 +92,7 @@ const productAtmospheres = await Promise.all(walk("public/images/product-atmosph
   };
 }));
 
-const contactImagePath = "public/images/contact/line-contact.webp";
+const contactImagePath = "public/images/contact/whatsapp-contact.webp";
 const contactImageMetadata = await sharp(contactImagePath).metadata();
 const contactImage = {
   file: contactImagePath,
@@ -101,6 +101,34 @@ const contactImage = {
   format: contactImageMetadata.format,
   alpha: contactImageMetadata.hasAlpha,
   bytes: statSync(contactImagePath).size,
+};
+
+const distributorCertificateImagePath = "public/images/distributors/ark-shiny-trading-certificate.webp";
+const distributorCertificateImageMetadata = await sharp(distributorCertificateImagePath).metadata();
+const distributorCertificatePdfPath = "public/images/distributors/ark-shiny-trading-certificate.pdf";
+const distributorCertificate = {
+  preview: {
+    file: distributorCertificateImagePath,
+    width: distributorCertificateImageMetadata.width,
+    height: distributorCertificateImageMetadata.height,
+    format: distributorCertificateImageMetadata.format,
+    bytes: statSync(distributorCertificateImagePath).size,
+  },
+  pdf: {
+    file: distributorCertificatePdfPath,
+    signature: readFileSync(distributorCertificatePdfPath).subarray(0, 5).toString("ascii"),
+    bytes: statSync(distributorCertificatePdfPath).size,
+  },
+};
+
+const distributorPartnerArtworkPath = "public/images/distributors/ark-shiny-trading-official-partner.webp";
+const distributorPartnerArtworkMetadata = await sharp(distributorPartnerArtworkPath).metadata();
+const distributorPartnerArtwork = {
+  file: distributorPartnerArtworkPath,
+  width: distributorPartnerArtworkMetadata.width,
+  height: distributorPartnerArtworkMetadata.height,
+  format: distributorPartnerArtworkMetadata.format,
+  bytes: statSync(distributorPartnerArtworkPath).size,
 };
 
 const siteAssetPaths = [
@@ -150,6 +178,8 @@ const report = {
   generatedDecorations,
   productAtmospheres,
   contactImage,
+  distributorCertificate,
+  distributorPartnerArtwork,
   siteAssets,
 };
 
@@ -163,7 +193,7 @@ if (
   || missingProductImages.length > 0
   || unusedProductImages.length > 0
   || duplicateSlugs.length > 0
-  || evidenceFiles.length !== 33
+  || evidenceFiles.length !== 15
   || homeImages.length !== 5
   || homeImages.some((image) => !image.alpha)
   || generatedDecorations.length !== 2
@@ -171,8 +201,17 @@ if (
   || productAtmospheres.length !== 10
   || productAtmospheres.some((image) => image.format !== "webp" || !image.alpha || image.width !== 1536 || image.height !== 1024)
   || contactImage.format !== "webp"
-  || contactImage.width !== 1074
-  || contactImage.height !== 1524
+  || contactImage.width !== 868
+  || contactImage.height !== 1885
+  || distributorCertificate.preview.format !== "webp"
+  || distributorCertificate.preview.width !== 2200
+  || distributorCertificate.preview.height !== 1556
+  || distributorCertificate.preview.bytes > 600_000
+  || distributorCertificate.pdf.signature !== "%PDF-"
+  || distributorPartnerArtwork.format !== "webp"
+  || distributorPartnerArtwork.width !== 1087
+  || distributorPartnerArtwork.height !== 1447
+  || distributorPartnerArtwork.bytes > 250_000
   || siteAssets.some((asset) => asset.bytes > 500_000)
   || siteAssets[0]?.format !== "webp"
   || siteAssets[0]?.width !== 2400

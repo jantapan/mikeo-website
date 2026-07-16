@@ -40,9 +40,10 @@ export function ProductExplorer({
     ? requested as CategoryId
     : "all";
   const visible = useMemo(() => {
+    const filterSource = filter === "all" ? sourceProducts : products;
     const filtered = filter === "all"
-      ? sourceProducts
-      : sourceProducts.filter((product) => product.categoryId === filter);
+      ? filterSource
+      : filterSource.filter((product) => product.categoryId === filter);
     return typeof limit === "number" ? filtered.slice(0, limit) : filtered;
   }, [filter, limit, sourceProducts]);
 
