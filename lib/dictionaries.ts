@@ -30,8 +30,7 @@ const en = {
     descriptor: "MIKEO brand & product showcase",
   },
   home: {
-    note: "MIKEO",
-    constellationTitle: "Everyday self-care, made easier, brighter, and more confident.",
+    constellationTitle: "Committed to Creating Quality Products\nfor a Better Everyday Life",
     constellationIntro: "Explore real MIKEO products and the artwork supplied for each product.",
     heroVisual: "Five featured MIKEO product packages",
     discoveryTitle: "MIKEO products",
@@ -165,8 +164,7 @@ const th: Dictionary = {
     descriptor: "MIKEO Brand & Product Showcase",
   },
   home: {
-    note: "MIKEO",
-    constellationTitle: "ให้ทุกวันของการดูแลตัวเอง ง่ายขึ้น สนุกขึ้น และมั่นใจขึ้น",
+    constellationTitle: "มุ่งมั่นสร้างสรรค์ผลิตภัณฑ์คุณภาพ\nเพื่อส่งมอบสิ่งที่ดีที่สุดในทุกวัน",
     constellationIntro: "สำรวจผลิตภัณฑ์จริงและภาพข้อมูลของ MIKEO ในแต่ละรายการ",
     heroVisual: "ผลิตภัณฑ์เด่นของ MIKEO จำนวน 5 รายการ",
     discoveryTitle: "ผลิตภัณฑ์ MIKEO",

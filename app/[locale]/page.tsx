@@ -121,10 +121,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           </div>
 
           <div className="home-editorial-copy">
-            <span className="home-editorial-kicker">{h.note}</span>
             <h1 id="home-editorial-title">
-              <span>MIKEO</span>
-              {h.constellationTitle}
+              <span className="home-editorial-brand">MIKEO</span>
+              <span className="home-editorial-title">{h.constellationTitle}</span>
             </h1>
             <p>{h.constellationIntro}</p>
             <div className="home-editorial-actions">
