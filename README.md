@@ -34,12 +34,18 @@ NEXT_PUBLIC_SITE_URL=https://your-production-domain.com
 
 ค่านี้ใช้สร้าง canonical URL, hreflang, sitemap และ social sharing metadata หาก deploy บน Vercel โดยยังไม่ได้ตั้งค่า ระบบจะใช้ deployment URL เป็น fallback แต่ควรตั้งโดเมนจริงเสมอ
 
-## รายการที่รอข้อมูลทางการ
+## ข้อมูลทางการที่เผยแพร่แล้ว
 
-- ลิงก์ช่องทางติดต่อและ social media: ยังไม่มีการฝังลิงก์ที่คาดเดา ไอคอนในหน้า Contact เป็นองค์ประกอบตกแต่งเท่านั้น
-- รายชื่อตัวแทนผู้จัดจำหน่ายอย่างเป็นทางการ: หน้า `/th/distributors` และ `/en/distributors` แสดงพื้นที่รอยืนยัน และถูกตั้ง `noindex` พร้อมตัดออกจาก sitemap จนกว่าจะมีข้อมูลจริง
+- ช่องทางติดต่อ: Instagram และ Facebook ของ MIKEO, LINE ID `mikeo.789` และภาพติดต่อ WhatsApp ที่ได้รับจากแบรนด์
+- ตัวแทนผู้จัดจำหน่ายอย่างเป็นทางการ: ARK SHINY TRADING L.L.C. สำหรับภูมิภาค GCC พร้อมภาพประกาศและใบรับรองที่ได้รับจากแบรนด์
+- หน้า `/th/distributors` และ `/en/distributors` เปิดให้ค้นหาและรวมอยู่ใน sitemap แล้ว
 
-เมื่อได้รับข้อมูล ให้ตรวจสอบชื่อ ปลายทาง URL และสิทธิ์การใช้โลโก้/ข้อมูลก่อนเผยแพร่ แล้วจึงนำ `noindex` ออกจาก metadata ของหน้าตัวแทนและเพิ่ม route กลับเข้า sitemap
+## ขั้นตอนก่อนเชื่อมโดเมนจริง
+
+1. เชื่อม repository นี้กับผู้ให้บริการที่รองรับ Next.js 16 เช่น Vercel
+2. กำหนด Node.js 20.9.0 ขึ้นไป และใช้ `npm run build` เป็นคำสั่ง build
+3. ตั้ง `NEXT_PUBLIC_SITE_URL` เป็นโดเมน HTTPS จริงใน Production Environment
+4. ตรวจ DNS, SSL, canonical URL, `robots.txt` และ `sitemap.xml` หลัง deploy
 
 ## Production notes
 
