@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MIKEO Website
 
-## Getting Started
+เว็บไซต์สองภาษา (ไทย/อังกฤษ) สำหรับนำเสนอแบรนด์และผลิตภัณฑ์ MIKEO จำนวน 13 รายการ พัฒนาด้วย Next.js 16 และเน้นภาพจริงที่ได้รับจากแบรนด์เป็นหลัก เว็บไซต์นี้เป็น Product Showcase และไม่มีราคา ตะกร้า หรือ Checkout
 
-First, run the development server:
+## เริ่มต้นใช้งาน
+
+ต้องใช้ Node.js 20.9.0 ขึ้นไป จากนั้นติดตั้งและเริ่ม development server:
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+เปิด `http://localhost:3000` ระบบจะพาไปภาษาอังกฤษอัตโนมัติ หรือเปิด `/th` สำหรับภาษาไทย
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+รันชุดตรวจทั้งหมดและ production build ก่อน deploy ทุกครั้ง:
 
-## Learn More
+```bash
+npm run check
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+คำสั่ง `check` ครอบคลุม TypeScript, ESLint และการตรวจ asset/slug ของสินค้า
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+คัดลอก `.env.example` เป็น `.env.local` และกำหนดโดเมนจริง:
 
-## Deploy on Vercel
+```text
+NEXT_PUBLIC_SITE_URL=https://your-production-domain.com
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+ค่านี้ใช้สร้าง canonical URL, hreflang, sitemap และ social sharing metadata หาก deploy บน Vercel โดยยังไม่ได้ตั้งค่า ระบบจะใช้ deployment URL เป็น fallback แต่ควรตั้งโดเมนจริงเสมอ
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## รายการที่รอข้อมูลทางการ
+
+- ลิงก์ช่องทางติดต่อและ social media: ยังไม่มีการฝังลิงก์ที่คาดเดา ไอคอนในหน้า Contact เป็นองค์ประกอบตกแต่งเท่านั้น
+- รายชื่อตัวแทนผู้จัดจำหน่ายอย่างเป็นทางการ: หน้า `/th/distributors` และ `/en/distributors` แสดงพื้นที่รอยืนยัน และถูกตั้ง `noindex` พร้อมตัดออกจาก sitemap จนกว่าจะมีข้อมูลจริง
+
+เมื่อได้รับข้อมูล ให้ตรวจสอบชื่อ ปลายทาง URL และสิทธิ์การใช้โลโก้/ข้อมูลก่อนเผยแพร่ แล้วจึงนำ `noindex` ออกจาก metadata ของหน้าตัวแทนและเพิ่ม route กลับเข้า sitemap
+
+## Production notes
+
+- `robots.txt`, `sitemap.xml`, web app manifest, canonical/hreflang และ Open Graph ถูกสร้างโดย App Router
+- Security headers พื้นฐานถูกตั้งใน `next.config.ts`
+- รูป social preview และ favicon สร้างใหม่ได้ด้วย `npm run assets:site`
+- ไม่ควรใส่ราคา คำเคลม เลข อย. ส่วนประกอบ หรือช่องทางติดต่อเพิ่มเติมหากไม่มีเอกสารยืนยันจากแบรนด์

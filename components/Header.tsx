@@ -14,8 +14,10 @@ export function Header({ locale, dictionary: d }: { locale: Locale; dictionary: 
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const navigation = [
-    { path: "/products", label: d.nav.products }, { path: "/about", label: d.nav.about },
-    { path: "/standards", label: d.nav.standards }, { path: "/distributors", label: d.nav.distributors },
+    { path: "/products", label: d.nav.products },
+    { path: "/about", label: d.nav.about },
+    { path: "/distributors", label: d.nav.distributors },
+    { path: "/contact", label: d.nav.contact },
   ];
 
   useEffect(() => {
@@ -40,7 +42,6 @@ export function Header({ locale, dictionary: d }: { locale: Locale; dictionary: 
 
   return <>
     <a className="skip-link" href="#main-content">{d.nav.skip}</a>
-    <div className="announcement" role="status">{d.announcement}</div>
     <header className="site-header"><div className="shell header-inner">
       <button ref={triggerRef} type="button" className="icon-button menu-trigger" aria-expanded={open} aria-controls="mobile-navigation" aria-label={d.nav.open} onClick={() => setOpen(true)}><span aria-hidden="true" className="menu-lines" /></button>
       <Link href={localePath(locale)} className="logo-link" aria-label={`MIKEO · ${d.nav.home}`}><Image src="/images/mikeo-logo.png" alt="MIKEO" width={547} height={420} priority className="brand-logo" /></Link>
@@ -50,7 +51,7 @@ export function Header({ locale, dictionary: d }: { locale: Locale; dictionary: 
     {open && <div className="menu-backdrop" role="presentation" onMouseDown={() => setOpen(false)}><div id="mobile-navigation" className="mobile-menu" role="dialog" aria-modal="true" aria-label={d.nav.mobile} onMouseDown={(e) => e.stopPropagation()}>
       <div className="mobile-menu-head"><Image src="/images/mikeo-logo.png" alt="" width={547} height={420} className="brand-logo" /><button ref={closeButtonRef} type="button" className="icon-button close-button" aria-label={d.nav.close} onClick={() => { setOpen(false); triggerRef.current?.focus(); }}><span aria-hidden="true">×</span></button></div>
       <LanguageSwitcher locale={locale} label={d.nav.language} />
-      <nav aria-label={d.nav.mobile} className="mobile-nav-links"><Link href={localePath(locale)} onClick={()=>setOpen(false)}>{d.nav.home}</Link>{navigation.map((item) => <Link href={localePath(locale,item.path)} key={item.path} onClick={()=>setOpen(false)}>{item.label}</Link>)}<Link href={localePath(locale,"/contact")} onClick={()=>setOpen(false)}>{d.nav.contact}</Link></nav>
+      <nav aria-label={d.nav.mobile} className="mobile-nav-links"><Link href={localePath(locale)} onClick={()=>setOpen(false)}>{d.nav.home}</Link>{navigation.map((item) => <Link href={localePath(locale,item.path)} key={item.path} onClick={()=>setOpen(false)}>{item.label}</Link>)}</nav>
     </div></div>}
   </>;
 }

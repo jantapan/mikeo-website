@@ -2,11 +2,18 @@
   "name": "mikeo-website",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "verify:assets": "node scripts/verify-product-assets.mjs",
+    "check": "npm run typecheck && npm run lint && npm run verify:assets",
+    "assets:site": "node scripts/create-site-assets.mjs"
   },
   "dependencies": {
     "next": "16.2.10",

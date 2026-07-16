@@ -1,0 +1,118 @@
+.root {
+  --atmosphere-x: 0px;
+  --atmosphere-y: 0px;
+  --artwork-x: 0px;
+  --artwork-y: 0px;
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  perspective: 900px;
+}
+
+.artwork {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  opacity: 0.92;
+  filter: saturate(1.08) drop-shadow(0 1rem 1.4rem rgb(0 0 0 / 12%));
+  transform: translate3d(var(--artwork-x), var(--artwork-y), 0) scale(1.025);
+  transform-origin: center;
+  transition: transform 650ms cubic-bezier(0.16, 1, 0.3, 1), filter 450ms ease;
+  will-change: transform;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  contain: strict;
+  filter: saturate(1.08);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  transform: translate3d(var(--atmosphere-x), var(--atmosphere-y), 0);
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.control {
+  position: absolute;
+  z-index: 3;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: #171717;
+  box-shadow: 0 0.6rem 1.8rem rgb(0 0 0 / 20%);
+  cursor: pointer;
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), background-color 240ms ease;
+}
+
+.root[data-atmosphere="sakura-fall"] .artwork {
+  transform-origin: 12% 18%;
+}
+
+.root[data-atmosphere="sakura-fall"]:hover .artwork {
+  transform: translate3d(var(--artwork-x), var(--artwork-y), 0) rotate(-1.7deg) scale(1.075);
+}
+
+.root[data-atmosphere="cocoa-splash"]:hover .artwork,
+.root[data-atmosphere="tomato-burst"]:hover .artwork,
+.root[data-atmosphere="citrus-burst"]:hover .artwork {
+  transform: translate3d(var(--artwork-x), var(--artwork-y), 0) scale(1.09);
+  filter: saturate(1.16) drop-shadow(0 1.4rem 2rem rgb(0 0 0 / 18%));
+}
+
+.root[data-atmosphere="pistachio-orbit"]:hover .artwork,
+.root[data-atmosphere="berry-glow"]:hover .artwork,
+.root[data-atmosphere="berry-fiber"]:hover .artwork,
+.root[data-atmosphere="glowy-spark"]:hover .artwork,
+.root[data-atmosphere="fitty-fresh"]:hover .artwork {
+  transform: translate3d(var(--artwork-x), var(--artwork-y), 0) rotate(1deg) scale(1.07);
+}
+
+.root[data-atmosphere="veggie-bloom"]:hover .artwork,
+.root[data-atmosphere="matcha-mist"]:hover .artwork,
+.root[data-atmosphere="apple-crisp"]:hover .artwork,
+.root[data-atmosphere="birdnest-steam"]:hover .artwork {
+  transform: translate3d(var(--artwork-x), var(--artwork-y), 0) rotate(-0.7deg) scale(1.065);
+}
+
+.control:hover {
+  transform: rotate(22deg) scale(1.08);
+  background: #e30613;
+}
+
+.control:focus-visible {
+  outline: 3px solid #fff;
+  box-shadow: 0 0 0 5px #e30613;
+}
+
+.control span {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artwork,
+  .content,
+  .control {
+    transition: none;
+    transform: none;
+  }
+}
