@@ -4,9 +4,9 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "MIKEO Brand & Product Showcase",
+    name: "MIKEO Health & Beauty",
     short_name: "MIKEO",
-    description: "Explore the MIKEO brand and its 13-product showcase.",
+    description: "Discover MIKEO health and beauty products and official brand information.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

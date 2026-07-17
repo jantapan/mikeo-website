@@ -51,7 +51,7 @@ Deployment procedure:
 3. Open the local `out/` directory in FileZilla.
 4. Open the confirmed remote document root on the server.
 5. Upload the **contents inside** `out/`, not the `out` folder itself.
-6. Replace the placeholder `index.html` only after the backup is complete.
+6. Replace the generated website files only after the backup is complete. The exported `index.php` intentionally replaces the old eight-byte placeholder with a permanent redirect to `/en/`.
 7. Verify `/`, `/en/`, `/th/`, product detail pages, distributor pages, contact links, PDFs, `/robots.txt`, and `/sitemap.xml` over HTTPS.
 
 The project uses trailing-slash URLs so normal static hosting can resolve each route through its own `index.html` without Next.js running on the server. phpMyAdmin is not required.

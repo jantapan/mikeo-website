@@ -2,8 +2,8 @@ import type { Locale } from "./i18n";
 
 const en = {
   meta: {
-    title: "MIKEO | Brand & product showcase",
-    description: "Explore MIKEO and its current product range.",
+    title: "MIKEO | Health & Beauty Products",
+    description: "Discover MIKEO health and beauty products, official distributor information, and verified brand contact channels.",
   },
   nav: {
     products: "Products",
@@ -136,8 +136,8 @@ export type Dictionary = typeof en;
 
 const th: Dictionary = {
   meta: {
-    title: "MIKEO | แบรนด์และผลิตภัณฑ์",
-    description: "สำรวจแบรนด์ MIKEO และผลิตภัณฑ์ทั้ง 13 รายการ",
+    title: "MIKEO | ผลิตภัณฑ์สุขภาพและความงาม",
+    description: "สำรวจผลิตภัณฑ์สุขภาพและความงามของ MIKEO ข้อมูลตัวแทนอย่างเป็นทางการ และช่องทางติดต่อที่ได้รับการยืนยัน",
   },
   nav: {
     products: "ผลิตภัณฑ์",

@@ -97,6 +97,7 @@ for (const sitemapUrl of sitemapUrls) {
 }
 
 const rootHtml = await readFile(join(outputRoot, "index.html"), "utf8");
+const legacyIndexPhp = await readFile(join(outputRoot, "index.php"), "utf8");
 const textFiles = files.filter((file) => [".css", ".html", ".js", ".txt", ".webmanifest", ".xml"].includes(extname(file)));
 const localhostFiles = [];
 
@@ -112,6 +113,9 @@ if (brokenReferences.length) errors.push(`Found ${brokenReferences.length} broke
 if (brokenSitemapUrls.length) errors.push(`Found ${brokenSitemapUrls.length} invalid sitemap URLs`);
 if (localhostFiles.length) errors.push(`Found localhost metadata in ${localhostFiles.length} exported files`);
 if (!rootHtml.includes("url=/en/")) errors.push("Root page is missing the static /en/ forwarding instruction");
+if (!legacyIndexPhp.includes('header("Location: /en/", true, 301)')) {
+  errors.push("Legacy /index.php is missing the permanent /en/ redirect");
+}
 
 console.log(JSON.stringify({
   files: files.length,
