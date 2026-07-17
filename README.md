@@ -1,55 +1,81 @@
 # MIKEO Website
 
-เว็บไซต์สองภาษา (ไทย/อังกฤษ) สำหรับนำเสนอแบรนด์และผลิตภัณฑ์ MIKEO จำนวน 13 รายการ พัฒนาด้วย Next.js 16 และเน้นภาพจริงที่ได้รับจากแบรนด์เป็นหลัก เว็บไซต์นี้เป็น Product Showcase และไม่มีราคา ตะกร้า หรือ Checkout
+Bilingual (Thai/English) image-first product showcase for 13 MIKEO products. The site has no prices, cart, checkout, or online ordering.
 
-## เริ่มต้นใช้งาน
+## Local development
 
-ต้องใช้ Node.js 20.9.0 ขึ้นไป จากนั้นติดตั้งและเริ่ม development server:
+Node.js 20.9.0 or newer is required.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-เปิด `http://localhost:3000` ระบบจะพาไปภาษาอังกฤษอัตโนมัติ หรือเปิด `/th` สำหรับภาษาไทย
+Open `http://localhost:3000`. The root page forwards to English; Thai is available at `/th/`.
 
-## Production checks
+## Production checks and static export
 
-รันชุดตรวจทั้งหมดและ production build ก่อน deploy ทุกครั้ง:
+Run all checks before every deployment:
 
 ```bash
 npm run check
 npm run build
+npm run verify:export
 ```
 
-คำสั่ง `check` ครอบคลุม TypeScript, ESLint และการตรวจ asset/slug ของสินค้า
+`check` runs TypeScript, ESLint, and the product asset/slug verifier. `build` creates a static website in `out/` for deployment with FileZilla. `verify:export` confirms the generated routes and internal file references. To preview that exact export locally, run:
 
-## Environment
-
-คัดลอก `.env.example` เป็น `.env.local` และกำหนดโดเมนจริง:
-
-```text
-NEXT_PUBLIC_SITE_URL=https://your-production-domain.com
+```bash
+npm start
 ```
 
-ค่านี้ใช้สร้าง canonical URL, hreflang, sitemap และ social sharing metadata หาก deploy บน Vercel โดยยังไม่ได้ตั้งค่า ระบบจะใช้ deployment URL เป็น fallback แต่ควรตั้งโดเมนจริงเสมอ
+Then open `http://localhost:3000`.
 
-## ข้อมูลทางการที่เผยแพร่แล้ว
+Production builds default canonical URLs, hreflang, sitemap, and social metadata to `https://mikeocosmetic.com`. Set `NEXT_PUBLIC_SITE_URL` only when building for a different domain.
 
-- ช่องทางติดต่อ: Instagram และ Facebook ของ MIKEO, LINE ID `mikeo.789` และภาพติดต่อ WhatsApp ที่ได้รับจากแบรนด์
-- ตัวแทนผู้จัดจำหน่ายอย่างเป็นทางการ: ARK SHINY TRADING L.L.C. สำหรับภูมิภาค GCC พร้อมภาพประกาศและใบรับรองที่ได้รับจากแบรนด์
-- หน้า `/th/distributors` และ `/en/distributors` เปิดให้ค้นหาและรวมอยู่ใน sitemap แล้ว
+## FileZilla deployment
 
-## ขั้นตอนก่อนเชื่อมโดเมนจริง
+Obtain these details from the hosting administrator:
 
-1. เชื่อม repository นี้กับผู้ให้บริการที่รองรับ Next.js 16 เช่น Vercel
-2. กำหนด Node.js 20.9.0 ขึ้นไป และใช้ `npm run build` เป็นคำสั่ง build
-3. ตั้ง `NEXT_PUBLIC_SITE_URL` เป็นโดเมน HTTPS จริงใน Production Environment
-4. ตรวจ DNS, SSL, canonical URL, `robots.txt` และ `sitemap.xml` หลัง deploy
+- FTP or SFTP host
+- Port (`21` for FTP/FTPS or commonly `22` for SFTP)
+- Username and password
+- The domain's document root, commonly `public_html`, `httpdocs`, or `www`
 
-## Production notes
+Do not commit credentials and do not send the password in chat.
 
-- `robots.txt`, `sitemap.xml`, web app manifest, canonical/hreflang และ Open Graph ถูกสร้างโดย App Router
-- Security headers พื้นฐานถูกตั้งใน `next.config.ts`
-- รูป social preview และ favicon สร้างใหม่ได้ด้วย `npm run assets:site`
-- ไม่ควรใส่ราคา คำเคลม เลข อย. ส่วนประกอบ หรือช่องทางติดต่อเพิ่มเติมหากไม่มีเอกสารยืนยันจากแบรนด์
+Deployment procedure:
+
+1. Back up the existing files in the remote document root.
+2. Run `npm ci`, `npm run check`, `npm run build`, and `npm run verify:export` locally.
+3. Open the local `out/` directory in FileZilla.
+4. Open the confirmed remote document root on the server.
+5. Upload the **contents inside** `out/`, not the `out` folder itself.
+6. Replace the placeholder `index.html` only after the backup is complete.
+7. Verify `/`, `/en/`, `/th/`, product detail pages, distributor pages, contact links, PDFs, `/robots.txt`, and `/sitemap.xml` over HTTPS.
+
+The project uses trailing-slash URLs so normal static hosting can resolve each route through its own `index.html` without Next.js running on the server. phpMyAdmin is not required.
+
+## Static-hosting security
+
+Next.js server headers are unavailable in a static export. Configure the following headers in the hosting control panel, web server, or Cloudflare after confirming what the hosting provider supports:
+
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()`
+
+Also confirm the domain redirects HTTP to HTTPS and that only one canonical hostname is used.
+
+## Published brand information
+
+- MIKEO Instagram and Facebook, LINE ID `mikeo.789`, and the supplied WhatsApp contact image
+- Official distributor ARK SHINY TRADING L.L.C. for the GCC region, with the supplied announcement image and certificate
+- Distributor pages at `/th/distributors/` and `/en/distributors/`
+
+Do not add prices, claims, Thai FDA numbers, ingredients, or contact details unless they are supported by brand-provided source material.
+
+## Project utilities
+
+- `npm run assets:site` regenerates the social preview and favicon assets.
+- `robots.txt`, `sitemap.xml`, the web app manifest, canonical/hreflang, and Open Graph metadata are generated by the App Router during the static build.
