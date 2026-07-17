@@ -2,19 +2,17 @@ import { mkdir } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 
-const source = path.resolve(
-  "incoming",
-  "evidence",
-  "ข้อมูลไว้แจ้งลูกค้า",
-  "LINE_ALBUM_เอกสารไว้แจ้งลูกค้า_260506_18.jpg",
-);
+const source = process.argv[2]
+  ? path.resolve(process.argv[2])
+  : path.resolve("incoming", "contact", "whatsapp-contact.jpg");
 const outputDirectory = path.resolve("public", "images", "contact");
-const output = path.join(outputDirectory, "line-contact.webp");
+const output = path.join(outputDirectory, "whatsapp-contact.webp");
 
 await mkdir(outputDirectory, { recursive: true });
 
 const result = await sharp(source, { failOn: "error" })
   .rotate()
+  .resize({ width: 960, withoutEnlargement: true })
   .webp({ quality: 88, effort: 5, smartSubsample: true })
   .toFile(output);
 

@@ -44,7 +44,10 @@ const mappings = [
   ["ข้อมูลไว้แจ้งลูกค้า", "LINE_ALBUM_เอกสารไว้แจ้งลูกค้า_260506_19.jpg", "fiber-xs-green-apple", "color-guidance.webp"],
   ["ข้อมูลไว้แจ้งลูกค้า", "LINE_ALBUM_เอกสารไว้แจ้งลูกค้า_260506_22.jpg", "fiber-xs-green-apple", "appearance-guidance.webp"],
   ["ข้อมูลไว้แจ้งลูกค้า", "LINE_ALBUM_เอกสารไว้แจ้งลูกค้า_260506_7.jpg", "fiber-xs-plus-berry-zinc", "customer-guidance.webp"],
-];
+].filter(([, , , outputName]) => (
+  outputName !== "nutrition-information.webp"
+  && outputName !== "halal-certificate.webp"
+));
 
 const results = [];
 

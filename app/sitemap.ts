@@ -3,7 +3,9 @@ import { products } from "@/lib/catalog";
 import { localePath, locales, type Locale } from "@/lib/i18n";
 import { getSiteUrl } from "@/lib/site";
 
-const publicPaths = ["", "/about", "/products", "/contact"];
+export const dynamic = "force-static";
+
+const publicPaths = ["", "/about", "/products", "/distributors", "/contact"];
 
 function absoluteUrl(locale: Locale, path: string) {
   return new URL(localePath(locale, path), getSiteUrl()).toString();
